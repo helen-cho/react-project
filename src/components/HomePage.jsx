@@ -9,7 +9,7 @@ const HomePage = () => {
     const [last, setLast] = useState(1);
     const apiKey = process.env.REACT_APP_KAKAO_REST_KEY;
     console.log(apiKey);
-    
+
     const callAPI = async() => {
         const url="https://dapi.kakao.com/v3/search/book?target=title"
         const config = {
@@ -31,6 +31,11 @@ const HomePage = () => {
     useEffect(()=>{
         callAPI();
     }, [page]);
+
+    useEffect(()=> {
+        const titleElement = document.getElementsByTagName('title')[0];
+        titleElement.innerHTML = '홈페이지';
+    }, []);
 
     const onSumbit = (e)=> {
         e.preventDefault();
