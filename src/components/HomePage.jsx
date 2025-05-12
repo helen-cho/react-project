@@ -7,11 +7,14 @@ const HomePage = () => {
     const [query, setQuery] = useState('리액트');
     const [page, setPage] = useState(1);
     const [last, setLast] = useState(1);
+    const apiKey = process.env.REACT_APP_KAKAO_REST_KEY;
+    console.log(apiKey);
+    
     const callAPI = async() => {
         const url="https://dapi.kakao.com/v3/search/book?target=title"
         const config = {
             headers:{
-                Authorization:"KakaoAK 7dc21d5852274d162cc3c15163505083"
+                Authorization:"KakaoAK " + apiKey
             },
             params:{
                 query:query,
