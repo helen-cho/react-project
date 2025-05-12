@@ -3,13 +3,14 @@ import FooterPage from './components/FooterPage';
 import Menubar from './components/Menubar';
 
 function App() {
-  return (
-    <div>
-      <img src='./home.jpg' width='100%'/>
-      <Menubar/>
-      <FooterPage/>
-    </div>
-  );
+    const basename = process.env.PUBLIC_URL;
+    return (
+        <div>
+            <img src={basename + '/home.png'} width='100%'/>
+            <Menubar />
+            <FooterPage />
+        </div>
+    );
 }
 
 export default App;

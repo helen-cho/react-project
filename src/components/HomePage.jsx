@@ -8,7 +8,6 @@ const HomePage = () => {
     const [page, setPage] = useState(1);
     const [last, setLast] = useState(1);
     const apiKey = process.env.REACT_APP_KAKAO_REST_KEY;
-    console.log(apiKey);
 
     const callAPI = async() => {
         const url="https://dapi.kakao.com/v3/search/book?target=title"
@@ -64,7 +63,7 @@ const HomePage = () => {
             </Row>
             <Row>
                 {documents.map(doc=>
-                    <Col lg={2} md={3} xs={6} className='mb-2'>
+                    <Col lg={2} md={3} xs={6} className='mb-2' key={doc.isbn}>
                         <Card>
                             <Card.Body>
                                 <img src={doc.thumbnail} width="100%"/>
