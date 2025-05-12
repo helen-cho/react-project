@@ -9,9 +9,9 @@ const MainRouter = () => {
     return (
         <Container>
             <Routes>
-                <Route path='/' element={<HomePage/>}/>
-                <Route path='/cart' element={<CartPage/>}/>
-                <Route path='/login' element={<LoginPage/>}/>
+                <Route path={'/react-project'} element={<HomePage/>}/>
+                <Route path={`/react-project/cart`} element={<CartPage/>}/>
+                <Route path='/react-project/login' element={<LoginPage/>}/>
             </Routes>
         </Container>
     )
