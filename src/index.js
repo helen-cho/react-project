@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const basename = process.env.PUBLIC_URL;
-console.log('.........' , basename)
+
 root.render(
     <BrowserRouter basename={process.env.PUBLIC_URL}>
         <App/>

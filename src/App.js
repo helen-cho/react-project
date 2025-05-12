@@ -6,7 +6,7 @@ function App() {
     const basename = process.env.PUBLIC_URL;
     return (
         <div>
-            <img src={basename + '/home.png'} width='100%'/>
+            <img src={basename + '/home.jpg'} width='100%'/>
             <Menubar />
             <FooterPage />
         </div>
