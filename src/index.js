@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 const basename = process.env.PUBLIC_URL;
 
 root.render(
-    <HashRouter>
+    <BrowserRouter basename={basename}>
         <App/>
-    </HashRouter>
+    </BrowserRouter>
 );
 
 reportWebVitals();
