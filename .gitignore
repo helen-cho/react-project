@@ -3,6 +3,8 @@
 #API_KEY
 .env
 
+/src/firebase.js
+
 # dependencies
 /node_modules
 /.pnp

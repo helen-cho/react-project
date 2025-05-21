@@ -1,3 +1,21 @@
 a {
     text-decoration: none;
 }
+
+.title {
+    font-size: 12px;
+}
+
+.price {
+    font-size: 10px;
+}
+
+.cart {
+    cursor: pointer;
+}
+
+.heart {
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+}

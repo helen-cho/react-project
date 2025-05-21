@@ -1,10 +1,23 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Card, Col, Form, InputGroup, Row } from 'react-bootstrap';
 import BookPage from './BookPage';
+import { BsCart2 } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+import { getDatabase, ref, set, get, onValue, remove} from 'firebase/database';
+import { app } from '../firebase';
+import moment from 'moment';
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 const HomePage = () => {
+    const [loading, setLoading] = useState(false);
+    const uid = sessionStorage.getItem('uid');
+    const db = getDatabase(app);
+    const nav = useNavigate();
     const [documents, setDocuments] = useState([]);
+    const [heart, setHeart] = useState([]);
+
     const [query, setQuery] = useState('리액트');
     const [page, setPage] = useState(1);
     const [last, setLast] = useState(1);
@@ -22,15 +35,32 @@ const HomePage = () => {
                 page:page
             }
         }
+        setLoading(true);
         const res=await axios.get(url, config);
-        console.log(res);
         setDocuments(res.data.documents);
         setLast(Math.ceil(res.data.meta.pageable_count/12));
+        setLoading(false);
+    }
+
+    const checkHeart = ()=> {
+        setLoading(true);
+        onValue(ref(db, `heart/${uid}`), snapshot=>{
+            const rows = [];
+            snapshot.forEach(row=>{
+                rows.push(row.val().isbn);
+            });
+            setHeart(rows);
+            setLoading(false);
+        });
     }
 
     useEffect(()=>{
         callAPI();
     }, [page]);
+
+    useEffect(()=> {
+        checkHeart();
+    }, [uid]);
 
     useEffect(()=> {
         const titleElement = document.getElementsByTagName('title')[0];
@@ -46,6 +76,40 @@ const HomePage = () => {
         }
     }
 
+    const onClickRegHeart = (book) => {
+        if(uid){
+            set(ref(db, `heart/${uid}/${book.isbn}`), book);
+            alert('좋아요 추가!');
+        }else{
+            nav('/login');
+        }
+    }
+
+    const onClickHeart = (book) => {
+        remove(ref(db, `heart/${uid}/${book.isbn}`));
+        alert('좋아요 취소!');
+    }
+
+    const onClickCart = (book) => {
+        if(uid){
+            get(ref(db, `cart/${uid}/${book.isbn}`)).then(snapshot=>{
+                if(snapshot.exists()){
+                    alert('이미 장바구니에 존재합니다!');
+                }else{
+                    const date = moment(new Date()).format('YYYY-MM-DD HH:mm-ss');
+                    set(ref(db, `cart/${uid}/${book.isbn}`), {...book, date});
+                    alert('장바구니에 등록되었습니다!');
+                }
+                 if(window.confirm('장바구니로 이동하실래요?')){
+                        nav('/cart');
+                }
+            })
+        }else{
+            nav(`/login`);
+        }
+    }
+
+    if(loading) return <h1 className='my-5 text-center'>로딩중......</h1>
     return (
         <div>
             <h1 className='my-5 text-center'>홈페이지</h1>
@@ -68,10 +132,22 @@ const HomePage = () => {
                         <Card>
                             <Card.Body>
                                 <BookPage doc={doc}/>
+                                <div className='text-end heart'>
+                                    {heart.includes(doc.isbn) ? 
+                                        <FaHeart onClick={()=>onClickHeart(doc)}/>
+                                        :
+                                        <FaRegHeart onClick={()=>onClickRegHeart(doc)}/>
+                                    }
+                                </div>
                             </Card.Body>
                             <Card.Footer>
-                                <div className='text-truncate'>{doc.title}</div>
-                                <div>{doc.sale_price}원</div>
+                                <div className='text-truncate title'>{doc.title}</div>
+                                <Row>
+                                    <Col className='price align-self-center'>{doc.sale_price}원</Col>
+                                    <Col className='text-end cart'>
+                                        <BsCart2 onClick={()=>onClickCart(doc)}/>
+                                    </Col>
+                                </Row>
                             </Card.Footer>
                         </Card>
                     </Col>

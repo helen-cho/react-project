@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Card, Col, Form, Nav, Row } from 'react-bootstrap'
+import { Button, Card, Col, Form, Row } from 'react-bootstrap'
 import { app } from '../../firebase';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
@@ -32,6 +32,7 @@ const LoginPage = () => {
             .then(success=>{
                 setLoading(false);
                 alert('로그인 성공!');
+                sessionStorage.setItem('uid', success.user.uid);
                 sessionStorage.setItem('email', email);
                 nav('/');
             })

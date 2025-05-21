@@ -11,7 +11,7 @@ const BookPage = ({doc}) => {
     return (
         <>
             <img style={{'cursor':'pointer'}}
-                src={doc.thumbnail} width="100%" onClick={handleShow}/>
+                src={doc.thumbnail || 'https://placehold.co/100x145'} width="100%" onClick={handleShow}/>
             <Modal
                 show={show}
                 onHide={handleClose}

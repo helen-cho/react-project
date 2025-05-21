@@ -14,7 +14,8 @@ const Menubar = () => {
     const onClickLogout = (e) => {
         e.preventDefault();
         if(window.confirm('정말로 로그아웃 하실래요?')) {
-            sessionStorage.removeItem('email');
+            //sessionStorage.removeItem('email');
+            sessionStorage.clear();
             nav('/');
         }
     }
