@@ -30,11 +30,12 @@ const Menubar = () => {
                             className="me-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
                             navbarScroll>
-                            <Nav.Link href={basename} active={pathname==='/' && true}>Home</Nav.Link>
+                            <Nav.Link href={basename} active={pathname==='/'}>Home</Nav.Link>
                             {email &&
                                 <Nav.Link href={basename + '/cart'}
-                                    active={pathname==='/cart' && true}>장바구니</Nav.Link>
+                                    active={pathname==='/cart'}>장바구니</Nav.Link>
                             }
+                            <Nav.Link href={`${basename}/bbs`} active={pathname.startsWith('/bbs')}>게시글</Nav.Link>
                         </Nav>
                         <Nav>
                             {email ?

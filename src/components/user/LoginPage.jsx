@@ -34,7 +34,11 @@ const LoginPage = () => {
                 alert('로그인 성공!');
                 sessionStorage.setItem('uid', success.user.uid);
                 sessionStorage.setItem('email', email);
-                nav('/');
+                if(sessionStorage.getItem('target')){
+                    nav(sessionStorage.getItem('target'));
+                }else{
+                    nav('/');
+                }
             })
             .catch(error=>{
                 setLoading(false);
