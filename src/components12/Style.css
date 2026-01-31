@@ -1,0 +1,9 @@
+.title {
+    font-size: 12px;
+}
+
+.icon-heart {
+    cursor: pointer;
+    font-size: 25px;
+    color: orange;
+}

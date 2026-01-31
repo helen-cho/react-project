@@ -1,0 +1,9 @@
+1. PostRouter에 ReadPage, UpdatePage 컴포넌트를 등록한다.
+'/post/:id'
+'/post/update/:id'
+
+2. ReadPage에서 게시글 정보를 출력하는 기능을 완성한다.
+ 
+3. ReadPage에서 게시글 삭제 기능을 완성한다.
+
+4. UpdatePage에서 게시글 수성 기능을 완성한다.

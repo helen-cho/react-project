@@ -1,0 +1,39 @@
+.box {
+   width: 500px;
+   margin: 0px auto;
+   margin-top: 50px;
+}
+
+.box input {
+   display: inline;
+   margin:5px;
+   padding:5px 20px;
+   border-radius: 5px;
+   width: 300px;
+}
+
+.box button {
+   display: inline;
+   margin:5px;
+   padding:5px 20px;
+   border-radius: 5px;
+   width: 150px;
+}
+
+.box table {
+   width: 500px;
+   margin: 0px auto;
+   border-collapse: collapse;
+   margin-top:30px;
+}
+
+table td {
+   border: 1px solid gray;
+   padding: 5px 20px;
+}
+
+table tr:hover {
+   background: gray;
+   color: white;
+   cursor: pointer;
+}

@@ -1,0 +1,15 @@
+.title {
+    font-size: 12px;
+}
+
+.icon-heart {
+    cursor: pointer;
+    font-size: 30px;
+    color: orange;
+}
+
+.icon-cart {
+    cursor: pointer;
+    font-size: 30px;
+    color: gold;
+}

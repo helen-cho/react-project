@@ -1,0 +1,22 @@
+1. BookPage 도서검색에서 BookModal 도서정보 모달창을 만들어 연결한다.
+
+2. 네이버 개발자 센터에서 애플리케이션을 생성한다.
+https://developers.naver.com/main/
+
+3. 내 애플리케이션에서 NAVERID, NAVERSECRET 키를 복사한다.
+
+4. 루트 .env 파일에 복사한 키를 붙여넣는다.
+REACT_APP_NAVERID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+REACT_APP_NAVERSECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+* 교차 출처 리소스 공유(CORS:Cross-Origin Resource Sharing)란?
+- 한 출처(Origin)에서 다른 출처의 리소스에 접근할 수 있도록 허용.
+- 네이버 API 서버는 CORS을 허용하지 않아서 에러발생.
+- 클라이언트와 서버 사이에서 중개자 역할을 하는 프락시 서버 설정 필요.
+
+5. 네이버 검색을 위해 프락시 서버를 package.json에 추가한 후 서버를 다시 구동한다.
+ "proxy": "https://openapi.naver.com/v1"
+
+6. ShopPage 컴포넌트에 검색, 페이징 기능을 추가한다.
+
+7. ShopPage에서 ShopModal 상품정보 컴포넌트를 연결한다.

@@ -1,0 +1,5 @@
+1. [Firebase 내앱]-[제품 카테고리]-[Firestore]-[규칙]에서 rules의 read, write을 true로 변경한다.
+
+2. 쇼핑검색 페이지(ShopPage)에서 장바구니(Cart) 기능을 추가한다.
+
+3. ShopPage 컴포넌트에 장바구니 목록 출력과 삭제 기능을 추가한다.

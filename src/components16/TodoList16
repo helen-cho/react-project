@@ -1,0 +1,11 @@
+1. [Firebase 내앱]-[Firestore Database]-[색인]-[복합]-[색인추가]을 선택한 후 복합 인덱스를 생성한다.
+컬렉션ID: 'comments'-'postId(오름차순)'-'date(내림차순)'
+
+2. 높이가 자동으로 증가하는 TEXTAREA 상자 라이브러리를 설치한다.
+npm install react-textarea-autosize
+
+3. [post]-[comment] 폴더의 CommentRegister, CommentList를 [post] 폴더 ReadPage에 등록한다.
+
+4. CommentRegister에서 댓글 등록 기능을 작성한다.
+
+5. CommentList에서 댓글 목록출력 삭제, 수정 기능을 작성한다.

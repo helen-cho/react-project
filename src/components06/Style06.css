@@ -1,0 +1,56 @@
+.header {
+    background-color: lightgray;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
+}
+
+.footer {
+    background-color: lightgray;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 20px;
+    text-align: right;
+    border-top: 1px solid gray;
+}
+
+.footer button {
+    font-size: 20px;
+    margin:0px 5px;
+    padding:5px 20px;
+    border-radius: 5px;
+}
+
+.box {
+    width: 300px;
+    margin:0px auto;
+}
+
+.black {
+    color:white;
+    background: black;
+}
+
+.gray {
+    color: black;
+    background: lightgray;
+}
+
+.white {
+    color:black;
+    background: white;
+}

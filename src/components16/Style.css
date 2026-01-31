@@ -1,0 +1,62 @@
+.title {
+    font-size: 12px;
+}
+
+.icon-heart {
+    cursor: pointer;
+    font-size: 30px;
+    color: orange;
+}
+
+.icon-cart {
+    cursor: pointer;
+    font-size: 30px;
+    color: gold;
+}
+
+.body {
+    white-space: pre-wrap;
+    cursor: pointer;
+}
+
+.textarea {
+    width: 100%;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.email {
+    font-size: 12px;
+}
+
+.content {
+    white-space: pre-wrap;
+    cursor: pointer;
+}
+
+.comment {
+    border-bottom: 0.5px dotted gray;
+    padding: 10px 0px;
+    margin-bottom: 15px;
+}
+
+
+
+.ellipsis-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    /* 표시할 줄 수 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ellipsis-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* 표시할 줄 수 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

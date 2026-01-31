@@ -1,0 +1,49 @@
+.box {
+   width: 500px;
+   margin: 0px auto;
+   margin-top: 50px;
+   text-align: left;
+}
+
+.box input, .box button {
+   display: inline;
+   margin:5px;
+   padding:5px 20px;
+   border-radius: 5px;
+}
+
+
+.box h1 {
+   text-align: center;
+   margin-bottom: 30px;
+}
+
+.box .buttons {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.box .title {
+   font-size: 18px;
+   cursor: pointer;
+   margin-top: 10px;
+}
+
+.box .title:hover {
+   font-weight: bold;
+}
+
+.box .body {
+   color:gray;
+   font-size: 15px;
+   margin-bottom: 20px;
+}
+
+.box .photo{
+   color:gray;
+   font-size: 15px;
+}
+
+.box span {
+   font-size: 18px;
+}

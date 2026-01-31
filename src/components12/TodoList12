@@ -1,0 +1,5 @@
+1. [Firebase 내앱]-[제품 카테고리]-[Database]-[규칙]에서 rules의 read, write을 true로 변경한다.
+
+2. 도서검색 페이지(BookPage)에서 즐겨찾기(favorite) 기능을 추가한다.
+
+3. FavoritePage 컴포넌트에 즐겨찾기 목록 출력과 삭제 기능을 추가한다.

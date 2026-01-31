@@ -1,0 +1,27 @@
+a {
+    padding: 5px 20px;
+}
+
+.active {
+    background: gray;
+    color: white;
+}
+
+.body {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+}
+
+.title {
+    font-size: 12px;
+    justify-content: left;
+}
+
+.input-group-text {
+    width: 150px;
+    justify-content: center;
+}

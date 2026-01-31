@@ -1,0 +1,30 @@
+.box {
+    margin: 50px 0px;
+}
+
+
+h1, h2, h3 {
+    margin:25px 0px;
+}
+
+.hello {
+    background-color: black;
+    font-size: 50px;
+    color:aqua;
+}
+
+.content {
+    height: 500px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.menu {
+    font-size: 30px;
+    margin: 20px 0px;
+}
+
+a {
+   padding-right: 50px;
+}
