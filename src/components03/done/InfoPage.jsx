@@ -12,20 +12,28 @@ const InfoPage = () => {
     const nameRef = useRef(null);
 
     const onClick = () => {
-        alert(`Name:${name}, Age:${age}`);
+        if(!name || !age){
+            alert('이름또는 나이를 입력하세요!');
+        }else{
+            alert(`${name}, ${age} 등록완료!`);
+        }
         nameRef.current.focus();
     }
-    const onKeyDown = (e) => { if(e.key==='Enter') onClick(); }
+
+    const onKeyDown = (e) => { 
+        if(e.key==='Enter') onClick(); 
+    }
+    
     return (
         <div className='box'>
-            <h3>이름:{name || '무기명'} | 나이:{age}</h3>
+            <h3>이름:{name || '?'} | 나이:{age || '?'}</h3>
             <input ref={nameRef} value={name} 
                 onChange={(e)=>setName(e.target.value)} onKeyDown={onKeyDown}
                 placeholder='이름'/><br/>
             <input value={age} 
                 onChange={(e)=>setAge(e.target.value)} onKeyDown={onKeyDown}
                 placeholder='나이' type='number' setp={1}/><br/>
-            <button onClick={onClick}>확인</button>
+            <button onClick={onClick}>등록</button>
         </div>
     )
 }

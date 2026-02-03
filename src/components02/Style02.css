@@ -5,8 +5,7 @@
 }
 
 .box > h3 {
-   display: inline;
-   margin-right: 20px;
+   color:blue;
 }
 
 table {

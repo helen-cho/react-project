@@ -8,7 +8,7 @@ import Footer from './Footer'
 
 const MainPage = () => {
     return (
-        <div>
+        <div style={{textAlign:'center'}}>
             <h1>홈페이지</h1>
             <Header/>
             <Content/>

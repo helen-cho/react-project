@@ -1,7 +1,8 @@
 .box {
-   width: 500px;
+   width: 400px;
    margin: 0px auto;
    margin-top: 50px;
+   text-align: center;
 }
 
 .box input {
@@ -21,7 +22,7 @@
 }
 
 .box table {
-   width: 500px;
+   width: 400px;
    margin: 0px auto;
    border-collapse: collapse;
    margin-top:30px;

@@ -10,7 +10,6 @@ import PageButton from './PageButton';
 const TodoPage = () => {
     const [page, setPage]= useState(1);
     const [todos, setTodos] = useState([]);
-    const [checked, setChecked] = useState([]);
     const lastRef = useRef(1);
     const size=5;
 
@@ -30,26 +29,14 @@ const TodoPage = () => {
         callAPI();
     }, [page]);
 
-    useEffect(()=>{
-        setChecked(todos.filter(todo=>todo.completed));
-    }, [todos]);
-
     const onChange = (e, id) => {
         const data = todos.map(todo=>todo.id===id ? {...todo, completed:e.target.checked} : todo);
-        setTodos(data);
-    }
-
-    const onChangeAll = (e) => {
-        const data = todos.map(todo=>({...todo, completed:e.target.checked}));
         setTodos(data);
     }
 
     return (
         <div className='box'>
             <h1>Todos</h1>
-            <input type='checkbox' onChange={onChangeAll} checked={todos.length===checked.length}/>
-            <span>선택/해제</span>
-            <hr/>
             { todos.map(todo=>
                 <div key={todo.id}>
                     <input type='checkbox' checked={todo.completed} onChange={(e)=>onChange(e, todo.id)}/>

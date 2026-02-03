@@ -15,10 +15,6 @@ const PostPage = () => {
         });
     }
 
-    useEffect(()=>{
-        callAPI();
-    }, []);
-
     return (
         <div className='box'>
             <h1>Posts</h1>

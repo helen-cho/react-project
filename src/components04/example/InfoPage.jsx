@@ -4,16 +4,15 @@ import React, { useState, useEffect } from 'react'
 import '../Style04.css'
 
 const InforPage = () => {
-    const [name, setName] = useState('홍길동');
-    const [age, setAge] = useState(20);
+    //1.렌더링이 될 때마다 이름, 나이 출력
+    //2.처음 렌더링 될 때만 이름, 나이 출력
+    //3.나이(age)가 변경될 때 마다 이름, 나이 출력
 
     return (
         <div className='box'>
-            <h1>이름:{name}, 나이:{age}</h1>
-            <input placeholder='이름' 
-                value={name} onChange={(e)=>setName(e.target.value)}/>
-            <input placeholder='나이' type='number' step={2}
-                value={age} onChange={(e)=>setAge(e.target.value)}/>
+            <h1>이름:?, 나이:?</h1>
+            <input placeholder='이름'/>
+            <input placeholder='나이' type='number' step={2}/>
         </div>
     )
 }

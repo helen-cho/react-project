@@ -1,7 +1,7 @@
 //Fragment(프래그먼트)연습 .box>h3 글자색상변경
 //------------------------------------------
 const Student = ({student}) => {
-    const {id, name, dept} = student;
+    const { id, name, dept } = student;
     return (
         <div>
             <h3>학번:{id}</h3>

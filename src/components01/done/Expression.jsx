@@ -11,6 +11,7 @@ const Expression = () => {
 
     return (
         <div className='box'>
+            {/*여기에 주석을 작성합니다. */}
             <h1>변수값 출력</h1>
             <h3>{name || 'Justin'}, {age+10}, {job || 'Programer'}, {isLogin.toString()}</h3>
             <h3>{`Name:${name}, Age:${age}, Job:${job}`}</h3>
