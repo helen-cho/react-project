@@ -54,8 +54,8 @@ const RegisterPage = () => {
                 <input value={price} onChange={onChange} 
                     placeholder='상품가격' name='price' type='number' step={1000}/>
                 <div>
-                    <button type='submit'>등록</button>
-                    <button type='reset'>취소</button>
+                    <button disabled={!name || !price} type='submit'>등록</button>
+                    <button disabled={JSON.stringify(form)===JSON.stringify(initForm)} type='reset'>취소</button>
                 </div>
             </form>
             <table>
