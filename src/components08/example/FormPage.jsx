@@ -14,20 +14,12 @@ const initForm = {
 
 const FormPage = () => {
     const [form, setForm] = useState(initForm);
-    const { id, pass, name, intro } = form;
-    const formRef = useRef(initForm);
-    const { setAlert, setConfirm } = useContext(ModalContext);
 
     const onSubmit = (e) => {
-        e.preventDefault();
+        
     }
-
-    const onReset = (e) => {
-        e.preventDefault();
-    }
-
     const onChange = (e) => {
-        setForm({...form, [e.target.name]:e.target.value});
+        
     }
 
     return (

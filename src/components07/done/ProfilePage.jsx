@@ -12,6 +12,7 @@ const ProfilePage = () => {
                 <li><NavLink to='/profiles/sung'>성춘향</NavLink></li>
             </ul>
             <Routes>
+                <Route path='/' element={<div>사용자를 입력해 주세요.</div>}/>
                 <Route path='/:username' element={<Profile/>}/>
             </Routes>
         </div>

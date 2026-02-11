@@ -1,0 +1,8 @@
+1. HTTP 비동기 통신을 쉽게 해주는 axios 자바스트립트 라이브러리를 설치한다.
+npm install axios
+
+2. 리액트 부트스트랩 사이트로 이동(https://react-bootstrap.netlify.app/)후 라이브러리를 설치한다.
+npm install react-bootstrap bootstrap
+
+3. 프로젝트 [src] 폴더 index.js에 부트스트랩 css 파일을 Import 한다.
+import 'bootstrap/dist/css/bootstrap.min.css';

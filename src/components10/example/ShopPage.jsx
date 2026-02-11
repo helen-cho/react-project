@@ -34,9 +34,6 @@ const ShopPage = () => {
         setLoading(false);
     }
 
-
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
-
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>상품검색</h1>

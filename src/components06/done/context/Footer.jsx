@@ -7,7 +7,6 @@ const Footer = () => {
     const {user, setUser} = useContext(UserContext);
     return (
         <div className={`footer ${dark ? 'black':'gray'}`}>
-            <span>{user.name}</span>
             {user.isLogin ?
                 <button onClick={()=>setUser({isLogin:false, name:'사용자'})}>로그아웃</button>
                 : 

@@ -6,7 +6,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Row, Col, Card } from 'react-bootstrap'
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SearchForm from '../common/SearchForm';
 import PagingButton from '../common/PagingButton'
 import BookModal from './book/BookModal';

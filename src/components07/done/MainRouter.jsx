@@ -16,7 +16,7 @@ const MainRouter = () => {
     const { pathname } = useLocation();
     return (
         <div className='box'>
-            <h5>메뉴를 선택하세요! {pathname}</h5>
+            <h5>메뉴를 선택하세요! ({pathname})</h5>
             <ul>
                 <li><NavLink to='/'>홈</NavLink></li>
                 <li><NavLink to='/about?page=1&query=노트북&detail=true'>소개</NavLink></li>

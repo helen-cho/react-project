@@ -7,6 +7,13 @@ import React, { useReducer, useState, useRef } from 'react'
 import Product from './Product'
 import '../Style05.css'
 
+export const ACTION_TYPE = {
+    add:'등록',
+    delete:'삭제',
+    order:'주문',
+    cancel:'취소'
+}
+
 const initState = {
     cart: {
         count:1,
@@ -15,17 +22,6 @@ const initState = {
     order: {
         count:2,
         products:[{ id:1, name:'엘지 냉장고'}, {id:2, name:'엘지 세탁기'}]
-    }
-}
-
-const reducer = (state, action) => {
-    switch(action.type){
-        case 'add':
-        case 'delete':
-        case 'order':
-        case 'cancel':
-        default:
-            return state;
     }
 }
 

@@ -2,6 +2,7 @@
 //Col 레이아웃 디자인 xs={6},md={4},lg={3},xl={2}
 import React, { useEffect, useRef, useState } from 'react'
 import { Row, Col, Card } from 'react-bootstrap'
+import '../Style08.css'
 import axios from 'axios'
 import PageButton from './PageButton';
 
@@ -21,14 +22,9 @@ const LayoutPage = () => {
         lastRef.current=Math.ceil(res.data.length/size);
     }
 
-    useEffect(()=>{
-        callAPI();
-    }, [page]);
-
     return (
         <div>
             <h1>게시글</h1>
-            <PageButton page={page} setPage={setPage} last={lastRef.current}/>
         </div>
     )
 }

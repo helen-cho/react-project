@@ -1,9 +1,9 @@
 import './App.css';
-import Component from './components01/done/MainPage'
+import Component from './components08/done/MainRouter'
 
 const App = ()=> {
     return (
-        <div className='m-5'>
+        <div>
             <Component/>
         </div>
     );

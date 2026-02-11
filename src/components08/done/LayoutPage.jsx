@@ -2,8 +2,9 @@
 //Col 레이아웃 디자인 xs={6},md={4},lg={3},xl={2}
 import React, { useEffect, useRef, useState } from 'react'
 import { Row, Col, Card } from 'react-bootstrap'
+import '../Style08.css'
 import axios from 'axios'
-import PageButton from './PageButton';
+import PageButton from './PageButton'
 
 const LayoutPage = () => {
     const [posts, setPosts] = useState([]);

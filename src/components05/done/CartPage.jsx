@@ -7,6 +7,12 @@ import React, { useReducer, useState, useRef } from 'react'
 import Product from './Product'
 import '../Style05.css'
 
+export const ACTION_TYPE = {
+    add:'등록',
+    delete:'삭제',
+    order:'주문',
+    cancel:'취소'
+}
 const initState = {
     cart: {
         count:1,
@@ -20,7 +26,7 @@ const initState = {
 
 const reducer = (state, action) => {
     switch(action.type){
-        case 'add':
+        case ACTION_TYPE.add:
             return {
                 ...state,
                 cart:{
@@ -28,7 +34,7 @@ const reducer = (state, action) => {
                     products:[...state.cart.products, action.product]
                 }
             }
-        case 'delete':
+        case ACTION_TYPE.delete:
             return {
                 ...state,
                 cart:{
@@ -36,7 +42,7 @@ const reducer = (state, action) => {
                     products:state.cart.products.filter(p=>p.id!==action.product.id)
                 }
             }
-        case 'order':
+        case ACTION_TYPE.order:
             return {
                 ...state,
                 cart:{
@@ -48,7 +54,7 @@ const reducer = (state, action) => {
                     products:[...state.order.products, action.product]
                 }
             }
-        case 'cancel':
+        case ACTION_TYPE.cancel:
             return {
                 ...state,
                 order:{
@@ -75,7 +81,7 @@ const CartPage = () => {
                 <h1>카트 목록</h1>
                 <h5>상품수:{state.cart.count}개</h5>
                 <input value={name} onChange={(e)=>setName(e.target.value)} placeholder='상품이름'/>
-                <button onClick={()=>dispatch({type:'add', product:{id:idRef.current++, name}})}>등록</button>
+                <button onClick={()=>dispatch({type:ACTION_TYPE.add, product:{id:idRef.current++, name}})}>등록</button>
                 <table>
                     <tbody>
                         {state.cart.products.map(p=>

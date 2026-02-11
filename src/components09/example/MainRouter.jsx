@@ -13,7 +13,6 @@ const MainRouter = () => {
                 <MenuBar/>
                 <Routes>
                     <Route path='/' element={<HomePage/>}/>
-                    <Route path='/book' element={<BookPage/>}/>
                 </Routes>
             </Container>
         </ModalProvider>

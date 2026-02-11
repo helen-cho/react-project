@@ -1,14 +1,11 @@
-1. HTTP 비동기 통신을 쉽게 해주는 axios 자바스트립트 라이브러리를 설치한다.
-npm install axios
-
-2. 카카오 개발자센터 애플리케이션을 생성한다.
+1. 카카오 개발자센터 애플리케이션을 생성한다.
 https://developers.kakao.com/
 
-3. 내 애플리케이션의 REST API 키를 복사한다.
+2. 내 애플리케이션의 REST API 키를 복사한다.
 
-4. 루트 .env 파일에 복사한 키를 붙여넣은 후 서버를 다시 구동한다.
+3. 루트 .env 파일에 복사한 키를 붙여넣은 후 서버를 다시 구동한다.
 REACT_APP_KAKAOAK=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-5. .gitignore 파일에 .env를 추가하여 github에 업로드 되지 않도록 한다. 
+4. .gitignore 파일에 .env를 추가하여 github에 업로드 되지 않도록 한다. 
 
-6. BookPage 컴포넌트에서 검색기능과 페이징 기능을 작성한다.
+5. BookPage 컴포넌트에서 검색기능과 페이징 기능을 작성한다.

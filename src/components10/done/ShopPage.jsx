@@ -3,7 +3,7 @@
 //BookModal 도서정보 출력 기능을 작성하여 연결
 //html출력:dangerouslySetInnerHTML={{__html:shop.title}}
 //-----------------------------------------------------------------------------
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios';
 import { Row, Col, Card } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
@@ -41,7 +41,7 @@ const ShopPage = () => {
     }, [query, page]);
 
     if(loading || !response) return <h1 className='text-center my-5'>로딩중...</h1>
-    const { total, items } = response;
+    const { items, total } = response;
     const last = Math.ceil(total/size);
 
     return (

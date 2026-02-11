@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 
 const JSONPage = () => {
-    const navi = useNavigate();
     const [response, setResponse] = useState(null);
 
     const callAPI = () => {
@@ -24,6 +23,11 @@ const JSONPage = () => {
         <div className='json'>
             <h5>JSONPlaceHolder</h5>
             <pre>{response && JSON.stringify(response, null, 2)}</pre>
+            <div>
+                <button>이전</button>
+                <span>1</span>
+                <button>다음</button>
+            </div>
         </div>
     )
 }

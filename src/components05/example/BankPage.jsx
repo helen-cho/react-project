@@ -12,25 +12,10 @@ const ACTION_TYPE = {
     interest:'이자',
     close:'해지'
 }
-
 const initState = 10000; //초기 잔액
 const rate = 0.1; //이율
 
-const reducer = (state, action) => {
-    const money = parseInt(action.money);
-    switch(action.type){
-        case ACTION_TYPE.deposit:
-        case ACTION_TYPE.withdrawal:
-        case ACTION_TYPE.interest:
-        case ACTION_TYPE.close:
-        default:
-            return state;
-    }
-}
-
 const BankPage = () => {
-    const [money, setMoney] = useState(1000);
-
     return (
         <div className='box'>
             <h1>잔액:?원</h1>

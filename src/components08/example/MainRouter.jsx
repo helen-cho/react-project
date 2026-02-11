@@ -10,20 +10,17 @@ import ModalProvider from '../context/ModalProvider'
 
 const MainRouter = () => {
     return (
-        <ModalProvider>
-            <Container className='mt-5'>
-                <NavLink to='/'>레이아웃</NavLink>
-                <NavLink to='/table'>테이블</NavLink>
-                <NavLink to='/form'>폼</NavLink>
-                <hr/>
-                <Routes>
-                    <Route path='/' element={<LayoutPage/>}/>
-                    <Route path='/table' element={<TablePage/>}/>
-                    <Route path='/form' element={<FormPage/>}/>
-                </Routes>
-            </Container>
-        </ModalProvider>
-
-    )
+        <Container className='mt-5'>
+            <NavLink to='/'>레이아웃</NavLink>
+            <NavLink to='/table'>테이블</NavLink>
+            <NavLink to='/form'>폼</NavLink>
+            <hr/>
+            <Routes>
+                <Route path='/' element={<LayoutPage/>}/>
+                <Route path='/table' element={<TablePage/>}/>
+                <Route path='/form' element={<FormPage/>}/>
+            </Routes>
+        </Container>
+)
 }
 export default MainRouter

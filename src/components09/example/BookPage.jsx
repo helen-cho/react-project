@@ -5,10 +5,10 @@
 //-------------------------------------------------------------------------------
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Row, Col, Card } from 'react-bootstrap'
+import { Row, Col, Card, Form, InputGroup } from 'react-bootstrap'
 import { useSearchParams } from 'react-router-dom';
-import SearchForm from './common/SearchForm';
-import PagingButton from './common/PagingButton'
+import SearchForm from '../common/SearchForm';
+import PagingButton from '../common/PagingButton'
 
 const BookPage = () => {
     const [loading, setLoading] = useState(false);
@@ -29,9 +29,6 @@ const BookPage = () => {
         console.log(res.data);
         setLoading(false);
     }
-
-
-    if(loading) return <h1 className='text-center my-5'>로딩중....</h1>
 
     return (
         <div className='my-5'>

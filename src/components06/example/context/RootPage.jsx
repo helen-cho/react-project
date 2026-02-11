@@ -6,8 +6,6 @@
 import React, { useState } from 'react'
 import '../../Style06.css'
 import Page from './Page'
-import { ThemeContext } from './ThemeContext';
-import { UserContext } from './UserContext';
 
 const RootPage = () => {
     return (

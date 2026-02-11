@@ -20,15 +20,10 @@ const TablePage = () => {
         setPosts(data);
         lastRef.current=Math.ceil(res.data.length/size);
     }
-
-    useEffect(()=>{
-        callAPI();
-    }, [page]);
     
     return (
         <div>
             <h1>게시글</h1>
-            <PageButton page={page} setPage={setPage} last={lastRef.current}/>
         </div>
     )
 }

@@ -1,7 +1,3 @@
-import { useContext } from 'react'
-import { ThemeContext } from './ThemeContext'
-import { UserContext } from './UserContext';
-
 const Content = () => {
     return (
         <div className={`content`}>

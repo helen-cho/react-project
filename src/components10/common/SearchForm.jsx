@@ -7,11 +7,11 @@ const SearchForm = ({query}) => {
     const { pathname } = useLocation();
     const navi=useNavigate();
     const textRef = useRef(null);
-
     const [text, setText] = useState(query);
+    
     const onSubmit = (e)=> {
         e.preventDefault();
-        navi(`${pathname}?query=${text}&page=1`);
+        navi(`${pathname}?query=${text}`);
     }
 
     useEffect(()=>{
