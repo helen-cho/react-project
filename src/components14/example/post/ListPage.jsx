@@ -5,11 +5,10 @@ import { Button,  Table} from 'react-bootstrap'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { app } from '../../initFirebase'
 import { getFirestore, collection, query, orderBy, onSnapshot } from 'firebase/firestore'
-import Paging from '../common/Paging'
+import PagingButton from '../../common/PagingButton'
 
 const ListPage = () => {
     const navi = useNavigate();
-    const [loading, setLoading] = useState(false);
     
     return (
         <div className='my-5'>

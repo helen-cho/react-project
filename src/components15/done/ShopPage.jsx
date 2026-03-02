@@ -54,8 +54,8 @@ const ShopPage = () => {
                     <Col  key={shop.productId} xs={6} md={4} lg={3} xl={2} className='mb-3'>
                         <Card>
                             <Card.Body className='position-relative'>
-                                <ShopModal shop={shop}/>
                                 <Cart shop={shop}/>
+                                <ShopModal shop={shop}/>
                             </Card.Body>
                             <Card.Footer>
                                 <div className='text-truncate title' dangerouslySetInnerHTML={{__html:shop.title}}/>

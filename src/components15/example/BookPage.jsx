@@ -1,5 +1,7 @@
-//1. Card.Body className='position-relative'로 지정
-//2. Favorite 컴포넌트를 등록
+//1. MainRouter에 BookPage를 Route로 등록
+//2. API 결과 출력 (index, title, thumbnail)
+//3. SearchForm 검색기능 (documents.length가 0이면 '검색 결과가 없습니다.' 메지지 출력)
+//4. 마지막 페이지가 1보다 큰 경우에만 Paging 컴포넌트 보이기
 //-------------------------------------------------------------------------------
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -8,7 +10,7 @@ import { useSearchParams } from 'react-router-dom';
 import SearchForm from '../common/SearchForm';
 import PagingButton from '../common/PagingButton'
 import BookModal from './book/BookModal';
-import Favorite from './book/Favorite'
+import Favorite from './book/Favorite';
 
 const BookPage = () => {
     const [loading, setLoading] = useState(false);
@@ -27,7 +29,7 @@ const BookPage = () => {
             params:{size, query, page}
         }
         const res = await axios(url, config);
-        console.log(res.data);
+        //console.log(res.data);
         setResponse(res.data);
         setLoading(false);
     }

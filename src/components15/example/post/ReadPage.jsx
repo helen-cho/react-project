@@ -12,11 +12,9 @@ import { Row, Col, Card, Button } from 'react-bootstrap'
 import { ModalContext } from '../../context/ModalContext'
 
 const ReadPage = () => {
-    const [loading, setLoading] = useState(false);
     const { setConfirm } = useContext(ModalContext);
     const navi = useNavigate();
 
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>게시글 정보</h1>

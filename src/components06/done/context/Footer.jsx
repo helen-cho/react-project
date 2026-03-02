@@ -12,7 +12,7 @@ const Footer = () => {
                 : 
                 <button onClick={()=>setUser({isLogin:true, name:'홍길동'})}>로그인</button>
             }
-            <button onClick={()=>setDark(!dark)}>{dark ? 'Dark Mode':'Light Mode'}</button>
+            <button onClick={()=>setDark(!dark)}>{dark ? 'Light Mode':'Dark Mode'}</button>
         </div>
     )
 }

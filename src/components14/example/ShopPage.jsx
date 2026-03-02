@@ -2,21 +2,22 @@
 //도서 검색, 페이징 기능을 작성
 //BookModal 도서정보 출력 기능을 작성하여 연결
 //html출력:dangerouslySetInnerHTML={{__html:shop.title}}
+//-----------------------------------------------------------------------------
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { Row, Col, Card } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
-import SearchForm from './common/SearchForm'
-import Paging from './common/Paging'
+import SearchForm from '../common/SearchForm'
+import PagingButton from '../common/PagingButton'
 import ShopModal from './shop/ShopModal'
-import Cart from './shop/Cart';
+import Cart from './shop/Cart'
 
 const ShopPage = () => {
     const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState(null);
 
-    const size=12;
     const [search] = useSearchParams();
+    const size=12;
     const query = search.get('query') || '노트북';
     const page = parseInt(search.get('page')) || 1;
 
@@ -33,7 +34,7 @@ const ShopPage = () => {
         const res = await axios(url, config);
         console.log(res.data);
         setResponse(res.data);
-        setLoading(false);       
+        setLoading(false);
     }
 
     useEffect(()=>{
@@ -53,8 +54,8 @@ const ShopPage = () => {
                     <Col  key={shop.productId} xs={6} md={4} lg={3} xl={2} className='mb-3'>
                         <Card>
                             <Card.Body className='position-relative'>
-                                <ShopModal shop={shop}/>
                                 <Cart shop={shop}/>
+                                <ShopModal shop={shop}/>
                             </Card.Body>
                             <Card.Footer>
                                 <div className='text-truncate title' dangerouslySetInnerHTML={{__html:shop.title}}/>
@@ -63,8 +64,8 @@ const ShopPage = () => {
                     </Col>
                 )}
             </Row>
-            {items.length===0 && <h3 className='text-center my-5'>검색결과가 없습니다.</h3>}
-            {last > 1 && <Paging page={page} last={last} query={query}/>}
+            {items.length===0 && <h3 className='text-center my-5'>검색 결과가 없습니다.</h3>}
+            {last > 1 && <PagingButton page={page} last={last} query={query}/>}
         </div>
     )
 }

@@ -1,16 +1,16 @@
 import { Route, Routes } from 'react-router'
-import HomePage from './HomePage'
 import MenuBar from './MenuBar'
-import ModalProvider from '../context/ModalProvider'
+import HomePage from './HomePage'
 import BookPage from './BookPage'
 import ShopPage from './ShopPage'
 import LoginPage from './user/LoginPage'
 import JoinPage from './user/JoinPage'
 import FavoritePage from './book/FavoritePage'
+import ModalProvider from '../context/ModalProvider'
 import CartPage from './shop/CartPage'
+import PostRouter from './post/PostRouter'
 import '../Style.css'
 import { Container } from 'react-bootstrap'
-import PostRouter from './post/PostRouter'
 
 const MainRouter = () => {
     return (

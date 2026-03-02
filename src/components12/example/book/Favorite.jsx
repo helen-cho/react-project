@@ -14,8 +14,7 @@ const Favorite = () => {
 
     return (
         <div className='position-absolute top-0 end-0 me-2 icon-heart'>
-            <FaRegHeart/>
-            <FaHeart/>
+            
         </div>
     )
 }

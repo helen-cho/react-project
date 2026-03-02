@@ -7,10 +7,9 @@ import { Table, Button } from 'react-bootstrap'
 import {ModalContext} from '../../context/ModalContext'
 
 const CartPage = () => {
-    const { setConfirm } = useContext(ModalContext);
     const [loading, setLoading] = useState(false);
+    const { setConfirm } = useContext(ModalContext);
 
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>장바구니</h1>

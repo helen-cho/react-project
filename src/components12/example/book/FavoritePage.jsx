@@ -16,5 +16,4 @@ const FavoritePage = () => {
         </div>
     )
 }
-
 export default FavoritePage

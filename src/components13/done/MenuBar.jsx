@@ -10,10 +10,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { ModalContext } from '../context/ModalContext';
 
 const MenuBar = () => {
-    const email=sessionStorage.getItem('email');
     const { setConfirm } = useContext(ModalContext);
-    const { pathname } = useLocation();
     const navi = useNavigate();
+    const email = sessionStorage.getItem('email');
+    const {pathname} = useLocation();
 
     const onLogout = () => {
         setConfirm({
@@ -25,6 +25,7 @@ const MenuBar = () => {
             }
         })
     }
+
     return (
         <Navbar expand="lg" bg="primary" data-bs-theme="dark">
             <Container fluid>
@@ -35,21 +36,23 @@ const MenuBar = () => {
                         <Nav.Link href="/book" className={pathname==='/book' && 'active'}>도서검색</Nav.Link>
                         <Nav.Link href="/shop" className={pathname==='/shop' && 'active'}>상품검색</Nav.Link>
                         <Nav.Link href="/post" className={pathname==='/post' && 'active'}>게시글</Nav.Link>
-                        { email && <>
-                            <Nav.Link href="/cart" className={pathname==='/cart' && 'active'}>장바구니</Nav.Link>
-                            <Nav.Link href="/favorite" className={pathname==='/favorite' && 'active'}>즐겨찾기</Nav.Link>
-                        </>}
+                        {email && 
+                            <>
+                                <Nav.Link href="/cart" className={pathname==='/cart' && 'active'}>장바구니</Nav.Link>
+                                <Nav.Link href="/favorite" className={pathname==='/favorite' && 'active'}>즐겨찾기</Nav.Link>
+                            </>
+                        }
                     </Nav>
-                    { email ? <>
-                        <Nav>
-                            <Nav.Link href='#' className='active'>{email}</Nav.Link>
-                            <Nav.Link herf='#' onClick={onLogout}>로그아웃</Nav.Link>
-                        </Nav>
-                    </>:<>
-                        <Nav>
-                            <Nav.Link href="/login">로그인</Nav.Link>
-                        </Nav>
-                    </>}
+                    <Nav>
+                        {email ? 
+                            <>
+                                <Nav.Link href="#" className='active'>{email}</Nav.Link>
+                                <Nav.Link onClick={onLogout} href="#">로그아웃</Nav.Link>
+                            </>
+                            :
+                            <Nav.Link href="/login" className={pathname=='/login' && 'active'}>로그인</Nav.Link>
+                        }
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

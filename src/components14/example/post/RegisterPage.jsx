@@ -9,10 +9,14 @@ import { getFirestore, addDoc, collection } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import moment from 'moment/moment'
 
+const initForm = {
+    title:'리액트란 무엇인가?',
+    body:'리액트(React)는 페이스북(현 메타)에서 개발한 사용자 인터페이스(UI) 구축을 위한 자바스크립트 라이브러리입니다. 컴포넌트 단위의 재사용 가능한 코드를 사용하여 복잡한 화면을 효율적으로 구성하며, 가상 DOM을 이용해 빠른 화면 렌더링을 제공하여 단일 페이지 애플리케이션(SPA) 개발에 주로 사용됩니다.'
+}
 const RegisterPage = () => {
-    const { setAlert } = useContext(ModalContext);
+    const { setAlert, setConfirm } = useContext(ModalContext);
     const navi = useNavigate();
-    
+
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>글쓰기</h1>

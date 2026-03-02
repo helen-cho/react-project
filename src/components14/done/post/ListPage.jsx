@@ -1,6 +1,5 @@
-//1. posts collection 목록을 출력한다.(날짜 내림차순)
-//2. 페이징 처리를 한다.
-//---------------------------------------------------
+//posts collection 목록을 출력한다.(날짜 내림차순)
+//페이징 처리를 한다.
 import React, { useEffect, useState, useRef } from 'react'
 import { Button,  Table} from 'react-bootstrap'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -9,75 +8,72 @@ import { getFirestore, collection, query, orderBy, onSnapshot } from 'firebase/f
 import PagingButton from '../../common/PagingButton'
 
 const ListPage = () => {
-    const [loading, setLoading] = useState(false);
     const navi = useNavigate();
-
     const db = getFirestore(app);
-    const [posts, setPosts] = useState([]);
-
-    const onRegister = () => {
-        if(sessionStorage.getItem('uid')){
-            navi('/post/register');
-        }else{
-            navi('/login');
-        }
-    }
+    const [response, setResponse] = useState(null);
 
     const [search] = useSearchParams();
     const page = parseInt(search.get('page')) || 1;
     const size = 5;
-    const lastRef = useRef(1);
+
+    const onClickRegister = () => {
+        if(!sessionStorage.getItem('email')){
+            navi('/login');
+        }else{
+            navi('/post/register')
+        }
+    }
 
     const callAPI = () => {
-        setLoading(true);
-        const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
+        const q=query(collection(db, 'posts'), orderBy('date', 'desc'));
         onSnapshot(q, snapshot=>{
             const rows=[];
-            snapshot.docs.forEach((row, index)=>{
-                rows.push({seq:index+1, id:row.id, ...row.data()});
+            snapshot.docs.forEach((row,index)=>{
+                rows.push({index, id:row.id, ...row.data()});
             });
             console.log(rows);
-            const start = (page-1) * size + 1;
-            const end = page * size;
-            const data = rows.filter(post=>post.seq>=start && post.seq<=end);
-            setPosts(data);
-            lastRef.current = Math.ceil(rows.length/size);
-            setLoading(false);
-        });
+            const start = (page-1) * size;
+            const end = page * size -1;
+            const data = rows.filter(row=>row.index>=start && row.index<=end);
+            setResponse({posts:data, total:rows.length});
+        })
     }
 
     useEffect(()=>{
         callAPI();
     }, [page]);
 
-    if(loading || !posts) return <h1 className='text-center my-5'>로딩중...</h1>
+    if(!response) return <h3 className='text-center my-5'>로딩중...</h3>
+    const {posts, total} = response;
+    const last = Math.ceil(total/size);
+
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>게시글</h1>
-            <div className='text-end mb-5'>
-                <Button onClick={onRegister} className='px-5'>새글작성</Button>
+            <div className='text-end'>
+                <Button onClick={onClickRegister} className='px-5'>새글작성</Button>
             </div>
-            <Table striped hover bordered>
+            <Table className='mt-5'>
                 <thead>
-                    <tr className='text-center'>
+                    <tr>
                         <td>No.</td>
-                        <td>Title</td>
-                        <td>Email</td>
-                        <td>Date</td>
+                        <td>제목</td>
+                        <td>이메일</td>
+                        <td>날짜</td>
                     </tr>
                 </thead>
                 <tbody>
-                {posts.map((post)=>
-                    <tr key={post.seq}>
-                        <td>{post.seq}</td>
-                        <td>{post.title}</td>
-                        <td>{post.email}</td>
-                        <td>{post.date}</td>
-                    </tr>
-                )}
+                    {posts.map(post=>
+                        <tr key={post.id}>
+                            <td>{post.index+1}</td>
+                            <td>{post.title}</td>
+                            <td>{post.email}</td>
+                            <td>{post.date}</td>
+                        </tr>
+                    )}
                 </tbody>
             </Table>
-            <PagingButton page={page} last={lastRef.current}/>
+            {last > 1 && <PagingButton page={page} last={last}/>}
         </div>
     )
 }

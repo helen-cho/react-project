@@ -13,7 +13,7 @@ const JoinPage = () => {
 
     return (
         <Row className='my-5 justify-content-center'>
-            <Col xs={8} md={6} lg={5} xl={4} className='my-5'>
+            <Col xs={7} md={6} lg={5} xl={4} className='my-5'>
                 <Card>
                     <Card.Header>
                         <h3 className='text-center'>회원가입</h3>

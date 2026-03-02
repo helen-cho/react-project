@@ -5,13 +5,13 @@ import { getFirestore, collection, query, where, getCountFromServer, addDoc } fr
 import { ModalContext } from '../../context/ModalContext'
 import { useNavigate } from 'react-router-dom'
 
-const Cart = ({shop}) => {
+const Cart = () => {
     const navi = useNavigate();
     const { setAlert } = useContext(ModalContext);
 
     return (
         <div className='position-absolute bottom-0 end-0  me-1 icon-cart'>
-            <FaCartPlus/>
+            
         </div>
     )
 }

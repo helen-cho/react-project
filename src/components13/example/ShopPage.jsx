@@ -32,7 +32,7 @@ const ShopPage = () => {
             params:{start:(page-1)*size+1, query:query, display:size}
         }
         const res = await axios(url, config);
-        console.log(res.data);
+        //console.log(res.data);
         setResponse(res.data);
         setLoading(false);
     }

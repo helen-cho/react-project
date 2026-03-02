@@ -2,6 +2,7 @@
 //이미지 칼럼 lg={4}
 //book.datetime.substr(0, 10)
 //title,contents,url,isbn,datetime,authors,publisher,status
+//-------------------------------------------------------------
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -46,5 +47,4 @@ const BookModal = ({book}) => {
         </>
     )
 }
-
 export default BookModal

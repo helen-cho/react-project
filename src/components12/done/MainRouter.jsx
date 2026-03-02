@@ -21,7 +21,7 @@ const MainRouter = () => {
                     <Route path='/shop' element={<ShopPage/>}/>
                     <Route path='/login' element={<LoginPage/>}/>
                     <Route path='/join' element={<JoinPage/>}/>
-                    <Route path='favorite' element={<FavoritePage/>}/>
+                    <Route path='/favorite' element={<FavoritePage/>}/>
                 </Routes>
             </Container>
         </ModalProvider>

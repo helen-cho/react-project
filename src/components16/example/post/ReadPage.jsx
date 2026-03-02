@@ -1,5 +1,9 @@
-// CommentRegister, CommentList를 [post] 폴더 ReadPage에 등록한다.
-//------------------------------------------------------------------------------------
+//1. PostRouter에 등록
+//2. ListPage 제목에 ReadPage 연결하기
+//3. posts에서 id에 해당하는 정보읽기
+//4. 로그인한 경우에만 수정, 삭제버튼 보이기
+//5. 삭제한 경우 ListPage로 이동하고 수정버튼 클릭시 수정페이지로 이동
+//----------------------------------------------------------------------
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { app } from '../../initFirebase'
@@ -10,63 +14,54 @@ import CommentRegister from './comment/CommentRegister'
 import CommentList from './comment/CommentList'
 
 const ReadPage = () => {
-    const [loading, setLoading] = useState(false);
     const { setConfirm } = useContext(ModalContext);
     const navi = useNavigate();
 
+    const {id} = useParams();
     const db = getFirestore(app);
-    const { id } = useParams();
-
     const [post, setPost] = useState('');
-    const { title, body, email, date} = post;
 
     const callAPI = async() => {
-        setLoading(true);
-        const snapshot = await getDoc(doc(db, 'posts', id));
-        setPost({id:snapshot.id, ...snapshot.data()});
-        console.log(snapshot.id, snapshot.data());
-        setLoading(false);
+        const snapshot=await getDoc(doc(db, 'posts', id));
+        //console.log(snapshot.data());
+        setPost(snapshot.data());
     }
+
     useEffect(()=>{
         callAPI();
     }, []);
 
-    const onClickDelete = () => {
+    const onRemove = () => {
         setConfirm({
             show:true,
-            message:`${id}번 문서를 삭제하실래요?`,
+            message:'게시글을 삭제하실래요?',
             action:async()=>{
                 await deleteDoc(doc(db, 'posts', id));
-                navi('/post');
+                navi(-1);
             }
         });
     }
 
-    const onClickUpdate = () => {
-        navi(`/post/update/${id}`);
-    }
-
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
+    if(!post) return <h3 className='text-center my-5'>로딩중...</h3>
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>게시글 정보</h1>
             <Row className='justify-content-center'>
                 <Col md={10} lg={9} xl={8}>
-                    {sessionStorage.getItem('uid') &&
-                        <div className='text-end mb-2'>
-                            <Button onClick={onClickUpdate} className='px-3 me-2' variant='outline-primary'>수정</Button>
-                            <Button onClick={onClickDelete} className='px-3' variant='outline-danger'>삭제</Button>
-                        </div>
-                    }
-                    <Card>
+                {sessionStorage.getItem('email')==post.email &&
+                    <div className='text-end mb-2'>
+                        <Button onClick={()=>navi(`/post/update/${id}`)} className='px-3 me-2' variant='outline-primary'>수정</Button>
+                        <Button onClick={onRemove} className='px-3' variant='outline-danger'>삭제</Button>
+                    </div>}
+                    <Card className='mt-3'>
                         <Card.Header>
-                            <h5 className='my-2'>{title}</h5>
+                            <h5>{post.title}</h5>
                         </Card.Header>
                         <Card.Body>
-                            <div style={{whiteSpace:'pre-wrap'}}>{body}</div>
+                            <div style={{whiteSpace:'pre-wrap'}}>{post.body}</div>
                         </Card.Body>
                         <Card.Footer className='text-muted'>
-                            Posted on <span>{date}</span> by <span>{email}</span>
+                            Posted on {post.email} by {post.date}
                         </Card.Footer>
                     </Card>
                 </Col>

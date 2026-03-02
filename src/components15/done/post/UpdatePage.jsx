@@ -11,28 +11,24 @@ import { app } from '../../initFirebase'
 import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore';
 
 const UpdatePage = () => {
-    const [loading, setLoading] = useState(false);
     const { setConfirm } = useContext(ModalContext);
     const navi = useNavigate();
 
     const {id} = useParams();
     const db = getFirestore(app);
-
+    
+    const formRef = useRef(null);
     const [form, setForm] = useState('');
-    const { title, body } = form;
+    const {title, body} = form;
     const onChange = (e) => {
         setForm({...form, [e.target.name]:e.target.value});
     }
 
-    const formRef = useRef(null);
     const callAPI = async() => {
-        setLoading(true);
-        const snapshot = await getDoc(doc(db, 'posts', id));
-        const post = {id:snapshot.id, ...snapshot.data()};
-        console.log(post);
-        setForm(post);
-        formRef.current=post;
-        setLoading(false);
+        const snapshot=await getDoc(doc(db, 'posts', id));
+        console.log(snapshot.data());
+        formRef.current = snapshot.data();
+        setForm(snapshot.data());
     }
 
     useEffect(()=>{
@@ -43,7 +39,7 @@ const UpdatePage = () => {
         e.preventDefault();
         setConfirm({
             show:true,
-            message:`${id}번 게시글을 수정하실래요?`,
+            message:'정말로 수정하실래요?',
             action:async()=>{
                 await setDoc(doc(db, 'posts', id), form);
                 navi(-1);
@@ -51,22 +47,31 @@ const UpdatePage = () => {
         });
     }
 
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
+    const onReset = (e) => {
+        e.preventDefault();
+        setConfirm({
+            show:true,
+            message:'정말로 취소하실래요?',
+            action:async()=>{
+                setForm(formRef.current);
+            }
+        });
+    }
+
+    if(!form) return <h3 className='text-center my-5'>로딩중...</h3>
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>게시글 수정</h1>
             <Row className='justify-content-center'>
                 <Col md={10} lg={9} xl={8}>
-                    <Form onSubmit={onSubmit}>
+                    <Form onSubmit={onSubmit} onReset={onReset}>
                         <Form.Control value={title} onChange={onChange}
                             name='title' placeholder='제목을 입력하세요.' className='mb-3'/>
                         <Form.Control value={body} onChange={onChange}
                             name='body' placeholder='내용을 입력하세요.' className='mb-3' rows={10} as='textarea'/>
                         <div className='text-center'>
-                            <Button disabled={JSON.stringify(form)===JSON.stringify(formRef.current)}
-                                type='submit' className='px-5 me-2'>저장</Button>
-                            <Button disabled={JSON.stringify(form)===JSON.stringify(formRef.current)} 
-                                type='reset' className='px-5' variant='secondary'>취소</Button>
+                            <Button disabled={JSON.stringify(form)===JSON.stringify(formRef.current)} type='submit' className='px-5 me-2'>저장</Button>
+                            <Button disabled={JSON.stringify(form)===JSON.stringify(formRef.current)} type='reset' className='px-5' variant='secondary'>취소</Button>
                         </div>
                     </Form>
                 </Col>

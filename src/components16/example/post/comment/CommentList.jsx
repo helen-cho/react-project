@@ -17,11 +17,10 @@ const reducer = (comments, action) => {
     }
 }
 
-const CommentList = ({postId}) => {
+const CommentList = () => {
     const [loading, setLoading] = useState(false);
     const { setConfirm } = useContext(ModalContext);
 
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
     return (
         <div>
             댓글목록

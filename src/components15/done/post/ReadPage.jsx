@@ -12,63 +12,54 @@ import { Row, Col, Card, Button } from 'react-bootstrap'
 import { ModalContext } from '../../context/ModalContext'
 
 const ReadPage = () => {
-    const [loading, setLoading] = useState(false);
     const { setConfirm } = useContext(ModalContext);
     const navi = useNavigate();
 
+    const {id} = useParams();
     const db = getFirestore(app);
-    const { id } = useParams();
-
     const [post, setPost] = useState('');
-    const { title, body, email, date} = post;
 
     const callAPI = async() => {
-        setLoading(true);
-        const snapshot = await getDoc(doc(db, 'posts', id));
-        setPost({id:snapshot.id, ...snapshot.data()});
-        console.log(snapshot.id, snapshot.data());
-        setLoading(false);
+        const snapshot=await getDoc(doc(db, 'posts', id));
+        console.log(snapshot.data());
+        setPost(snapshot.data());
     }
+
     useEffect(()=>{
         callAPI();
     }, []);
 
-    const onClickDelete = () => {
+    const onRemove = () => {
         setConfirm({
             show:true,
-            message:`${id}번 문서를 삭제하실래요?`,
+            message:'게시글을 삭제하실래요?',
             action:async()=>{
                 await deleteDoc(doc(db, 'posts', id));
-                navi('/post');
+                navi(-1);
             }
         });
     }
 
-    const onClickUpdate = () => {
-        navi(`/post/update/${id}`);
-    }
-
-    if(loading) return <h1 className='text-center my-5'>로딩중...</h1>
+    if(!post) return <h3 className='text-center my-5'>로딩중...</h3>
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>게시글 정보</h1>
             <Row className='justify-content-center'>
                 <Col md={10} lg={9} xl={8}>
-                    {sessionStorage.getItem('uid') &&
-                        <div className='text-end mb-2'>
-                            <Button onClick={onClickUpdate} className='px-3 me-2' variant='outline-primary'>수정</Button>
-                            <Button onClick={onClickDelete} className='px-3' variant='outline-danger'>삭제</Button>
-                        </div>
-                    }
-                    <Card>
+                    {post.email === sessionStorage.getItem('email') &&
+                    <div className='text-end mb-2'>
+                        <Button onClick={()=>navi(`/post/update/${id}`)} className='px-3 me-2' variant='outline-primary'>수정</Button>
+                        <Button onClick={onRemove} className='px-3' variant='outline-danger'>삭제</Button>
+                    </div>}
+                    <Card className='mt-3'>
                         <Card.Header>
-                            <h5 className='my-2'>{title}</h5>
+                            <h5>{post.title}</h5>
                         </Card.Header>
                         <Card.Body>
-                            <div style={{whiteSpace:'pre-wrap'}}>{body}</div>
+                            <div style={{whiteSpace:'pre-wrap'}}>{post.body}</div>
                         </Card.Body>
                         <Card.Footer className='text-muted'>
-                            Posted on <span>{date}</span> by <span>{email}</span>
+                            Posted on {post.email} by {post.date}
                         </Card.Footer>
                     </Card>
                 </Col>
