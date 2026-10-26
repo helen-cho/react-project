@@ -1,5 +1,6 @@
 import './App.css';
-import Component from './components11/done/MainRouter'
+import Component from 
+    './components07/practice/JSONRouter'
 
 const App = ()=> {
     return (

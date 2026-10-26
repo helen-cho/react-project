@@ -1,5 +1,7 @@
 .box {
     margin: 50px 0px;
+    background-color: yellow;
+    padding: 50px;
 }
 
 
